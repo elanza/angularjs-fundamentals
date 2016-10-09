@@ -1,61 +1,155 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="angularjsFundamentalsApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body ng-app="angularjsFundamentalsApp">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <!-- Add your site or application content here -->
+<!-- Add your site or application content here -->
 
 
-    <div class="container">
-      <p>Out {{main.awesomeThings}}</p>
-      <div ng-controller="MainCtrl as main">
-        Inside {{main.awesomeThings}}
-      </div>
+<div class="container">
+  <div ng-controller="MainCtrl as main">
+    <h2>Data Binding</h2>
+    <h3>One Side Data-Binding</h3>
+    <p>Used in:</p>
+    <pre>p, span, strong, em, ul, li</pre>
+    <h4>(Regular expression)</h4>
+    <p><strong>Name :</strong><span> {{main.Name}}</span></p>
+    <h4>(ng-bind)</h4>
+    <p><strong>Name : </strong><span ng-bind="main.Name"></span></p>
+    <p><strong>Salary : </strong><span ng-bind="main.Salary"></span></p>
+    <hr>
+
+    <h3>(Ng-show) Directive</h3>
+    <div class="alert alert-info" ng-show="main.showme">
+      <p><strong>Ng-show</strong></p>
     </div>
 
+    <h3>(Ng-hide) Directive</h3>
+    <div class="alert alert-info" ng-hide="main.hideme">
+      <p><strong>Ng-hide</strong></p>
+    </div>
+  </div>
+  <div ng-controller="BindingCtrl as con1">
+    <h3>(Ng-repeat) Directive ObjectArrays</h3>
+    <table class="table table-responsive">
+      <thead>
+      <tr>
+        <th>Team</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Number</th>
+        <th>Nationality</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="bin in con1.PlayersArray">
+        <td>{{bin.team}}</td>
+        <td>{{bin.name}}</td>
+        <td>{{bin.position}}</td>
+        <td>{{bin.number}}</td>
+        <td>{{bin.nationality}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>(Ng-Model) Two way Data-Binding</h4>
+  <table class="table table-responsive">
+    <thead>
+    <tr>
+      <th>Team</th>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Number</th>
+      <th>Nationality</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{}}</td>
+      <td>{{}}</td>
+      <td>{{}}</td>
+      <td>{{}}</td>
+      <td>{{}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <!--Input elements-->
+  <form action="">
+    <div class="panel-body">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Team</label>
+          <input type="text" class="form-control" title="Team" ng-model="main.Pla">
+        </div>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" title="Name">
+        </div>
+        <div class="form-group">
+          <label>Position</label>
+          <input type="text" class="form-control" title="Position">
+        </div>
+        <div class="form-group">
+          <label>Number</label>
+          <input type="text" class="form-control" title="Number">
+        </div>
+        <div class="form-group">
+          <label>Nationality</label>
+          <input type="text" class="form-control" title="Nationality">
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
 
 
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+  !function (A, n, g, u, l, a, r) {
+    A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = +new Date, a = n.createElement(g),
+      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+  }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/binding.js"></script>
+<script src="scripts/controllers/two-way-binding.js"></script>
+<!-- endbuild -->
 </body>
 </html>

@@ -9,10 +9,12 @@
  */
 angular.module('angularjsFundamentalsApp')
   .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    this.name = "Name of controller";
+    this.Name = "Lionel Messi";
+    this.Salary = 6000000 ;
+    //Values
+    this.firstValue = 10;
+    this.secondValue = 50;
+    //  ngshow
+    this.showme = true;
+    this.hideme = false;
   });
